@@ -5,6 +5,9 @@ const setup = () => {
   let firstCard = undefined
   let secondCard = undefined
   $(".card").on(("click"), function () {
+    if ($(this).hasClass("flip")) {
+      return;
+    }
     $(this).toggleClass("flip");
 
     if (!firstCard)
