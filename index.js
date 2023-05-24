@@ -52,7 +52,11 @@ const setup = () => {
 
       }
     }
-  });
+    
+
+  }
+  
+  );
 
   function win() {
     if (pairsFound === totalPairs) {
@@ -61,6 +65,8 @@ const setup = () => {
   
         const winMessage = "You win!";
         $('#winMessage').text(winMessage);
+        stopTimer();
+
       }, 1000);
     }
   }
@@ -78,13 +84,28 @@ const setup = () => {
     }, 1000);
   }
 
+  function stopTimer() {
+    clearInterval(timer);
+  }
+
   function updateTimer() {
     $("#timer").text(timePassed);
   }
-  
+
+  function resetGame() {
+    clearInterval(timer);
+    timePassed = 0;
+    updateTimer();
+  }
+
   startTimer();
+  
 }
 
+$(document).ready(() => {
+  setup();
 
-
-$(document).ready(setup)
+  $("#resetButton").on("click", () => {
+    resetGame();
+  });
+});

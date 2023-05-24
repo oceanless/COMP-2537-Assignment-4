@@ -15,3 +15,4 @@
 # Step 11b. Add a header showing the number of clicks the user has made, and the number of pairs left,number of pairs matched, and total number of pairs.
 # Step 12a. Add a timer to the game.
 # Step 12b. Show the time in the header.
+# Step 13. Add a reset button to the game.
