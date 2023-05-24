@@ -9,6 +9,8 @@ const setup = () => {
   const totalPairs = $(".card").length / 2;
   let clickCount = 0;
   $("#totalPairs").text(totalPairs);
+  let timer;
+  let timePassed = 0;
 
   $(".card").on(("click"), function () {
     if ($(this).hasClass("flip") || comparing) {
@@ -68,7 +70,19 @@ const setup = () => {
     $("#numPairsLeft").text(totalPairs - pairsFound);
     $("#numClicks").text(clickCount);
   }
+
+  function startTimer() {
+    timer = setInterval(() => {
+      timePassed++;
+      updateTimer();
+    }, 1000);
+  }
+
+  function updateTimer() {
+    $("#timer").text(timePassed);
+  }
   
+  startTimer();
 }
 
 
