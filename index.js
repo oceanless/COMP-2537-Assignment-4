@@ -5,6 +5,9 @@ const setup = () => {
   let firstCard = null;
   let secondCard = null;
   let comparing = false;
+  let pairsFound = 0;
+  const totalPairs = $(".card").length / 2;
+
   $(".card").on(("click"), function () {
     if ($(this).hasClass("flip") || comparing) {
       return;
@@ -26,6 +29,8 @@ const setup = () => {
         $(`#${secondCard.id}`).parent().off("click");
         firstCard = null;
         secondCard = null;
+        pairsFound++;
+        win();
       } else {
         console.log("no match")
         comparing = true;
@@ -40,6 +45,20 @@ const setup = () => {
       }
     }
   });
+
+  function win() {
+    if (pairsFound === totalPairs) {
+      setTimeout(() => {
+        alert("You win!");
+  
+        const winMessage = "You win!";
+        $('#winMessage').text(winMessage);
+      }, 1000);
+    }
+  }
+  
 }
+
+
 
 $(document).ready(setup)
