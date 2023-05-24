@@ -12,6 +12,19 @@ $(document).ready(() => {
     resetGame();
   });
 
+  $("#dark").on("click", () => {
+    toggleBackground("dark");
+  });
+
+  $("#light").on("click", () => {
+    toggleBackground("light");
+  });
+
+  function toggleBackground(theme) {
+    $("#game_grid").removeClass().addClass(theme);
+  }
+
+
   async function startGame() {
     let firstCard = null;
     let secondCard = null;
