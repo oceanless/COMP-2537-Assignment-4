@@ -19,3 +19,5 @@
 # Step 14. Add a start button to the game.
 # Step 15.a Add a difficulty level to the game. Show the levels controls to the header.
 # Step 15.b Add the logic to the difficulty levels.
+# Step 16. Add themes.
+# Step 17. Add power-up logic. May be reveal all cards for short period of time.

@@ -28,6 +28,7 @@ body {
 
 
 .card {
+  background-color: transparent;
   width: 25%;
   height: 150px;
   position: relative;
@@ -35,7 +36,6 @@ body {
   perspective: 1000px;
   transform-style: preserve-3d;
   border-radius: 4px;
-  background-color: rgb(255, 255, 255);
 }
 
 

@@ -34,6 +34,8 @@ $(document).ready(() => {
     let timer;
     let timePassed = 0;
     let gameStarted = false;
+    let powerUpActive = false;
+    let powerUpDuration = 1000;
 
     const difficulty = $("input[name='options']:checked").val();
     let maxTime;
@@ -53,6 +55,19 @@ $(document).ready(() => {
     $("#totalPairs").text(cardAmount / 2);
     $("#timer").text(maxTime);
     $("#clock").text(timePassed);
+    $("#powerUpButton").on("click", () => {
+      alert("Power up!");
+      if (!powerUpActive) {
+        powerUpActive = true;
+  
+        $(".card").addClass("flip");
+  
+        setTimeout(() => {
+          $(".card").removeClass("flip");
+          powerUpActive = false;
+        }, powerUpDuration);
+      }
+    });
 
     const pokemons = await getRandomPokemons(cardAmount / 2);
     const pokemonImages = pokemons.flatMap(pokemon => [pokemon.sprites.front_default, pokemon.sprites.front_default]);
@@ -129,7 +144,7 @@ $(document).ready(() => {
 
     function generateGameGrid(cardAmount, pokemonImages) {
       const gameGrid = $("#game_grid");
-      gameGrid.empty(); // Clear the game grid
+      gameGrid.empty();
 
       for (let i = 1; i <= cardAmount; i++) {
         const card = $("<div>")
@@ -143,7 +158,7 @@ $(document).ready(() => {
     function getRandomPokemonImage(pokemonImages) {
       const randomIndex = Math.floor(Math.random() * pokemonImages.length);
       const image = pokemonImages[randomIndex];
-      pokemonImages.splice(randomIndex, 1); // Remove the selected image from the array
+      pokemonImages.splice(randomIndex, 1); 
       return image;
     }
 
@@ -174,7 +189,6 @@ $(document).ready(() => {
     gameStarted = true;
     startTimer();
 
-    // Show the game and header
     $("#game_grid").show();
     $("#info").show();
   }
