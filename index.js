@@ -7,12 +7,16 @@ const setup = () => {
   let comparing = false;
   let pairsFound = 0;
   const totalPairs = $(".card").length / 2;
+  let clickCount = 0;
+  $("#totalPairs").text(totalPairs);
 
   $(".card").on(("click"), function () {
     if ($(this).hasClass("flip") || comparing) {
       return;
     }
     $(this).toggleClass("flip");
+    clickCount++;
+    updateHeader();
 
     if (!firstCard)
       firstCard = $(this).find(".front_face")[0];
@@ -30,6 +34,7 @@ const setup = () => {
         firstCard = null;
         secondCard = null;
         pairsFound++;
+        updateHeader();
         win();
       } else {
         console.log("no match")
@@ -40,6 +45,7 @@ const setup = () => {
           firstCard = null;
           secondCard = null;
           comparing = false;
+          updateHeader();
         }, 1000)
 
       }
@@ -55,6 +61,12 @@ const setup = () => {
         $('#winMessage').text(winMessage);
       }, 1000);
     }
+  }
+
+  function updateHeader() {
+    $("#numMatches").text(pairsFound);
+    $("#numPairsLeft").text(totalPairs - pairsFound);
+    $("#numClicks").text(clickCount);
   }
   
 }
