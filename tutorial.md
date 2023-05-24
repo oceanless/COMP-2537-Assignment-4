@@ -16,3 +16,4 @@
 # Step 12a. Add a timer to the game.
 # Step 12b. Show the time in the header.
 # Step 13. Add a reset button to the game.
+# Step 14. Add a start button to the game.
