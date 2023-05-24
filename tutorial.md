@@ -17,3 +17,5 @@
 # Step 12b. Show the time in the header.
 # Step 13. Add a reset button to the game.
 # Step 14. Add a start button to the game.
+# Step 15.a Add a difficulty level to the game. Show the levels controls to the header.
+# Step 15.b Add the logic to the difficulty levels.
